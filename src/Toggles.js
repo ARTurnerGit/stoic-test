@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import ToggleChoice from "./ToggleChoice";
 import "./Toggles.css";
 
 function Toggles({ question, answers }) {
-  return <h1>{question}</h1>;
+  return (
+    <div className="togglesContainer">
+      <h1>{question}</h1>
+      {answers.map((answer) => {
+        return <ToggleChoice {...answer} />;
+      })}
+    </div>
+  );
 }
 
 Toggles.propTypes = {
