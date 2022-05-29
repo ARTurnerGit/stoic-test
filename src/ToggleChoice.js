@@ -14,7 +14,7 @@ function ToggleChoice({
     <div className="toggleChoiceContainer">
       {choices.map((c, index) => {
         return (
-          <div onClick={() => handleClick(index)}>
+          <div className="toggleChoice" onClick={() => handleClick(index)}>
             {index === currentChoiceIndex ? <em>{c}</em> : c}
           </div>
         );

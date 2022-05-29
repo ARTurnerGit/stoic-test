@@ -35,16 +35,18 @@ function Toggles({ question, answers }) {
 
   return (
     <div className="togglesContainer">
-      <h1>{question}</h1>
-      {displayAnswers.map((answer, index) => {
-        return (
-          <ToggleChoice
-            {...answer}
-            handleChange={answersAreCorrect ? () => {} : handleChange(index)}
-          />
-        );
-      })}
-      <h2>{answerMessage}</h2>
+      <div className="questionContainer">
+        <h1>{question}</h1>
+        {displayAnswers.map((answer, index) => {
+          return (
+            <ToggleChoice
+              {...answer}
+              handleChange={answersAreCorrect ? () => {} : handleChange(index)}
+            />
+          );
+        })}
+        <h2>{answerMessage}</h2>
+      </div>
     </div>
   );
 }

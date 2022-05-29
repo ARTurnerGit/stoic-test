@@ -1,0 +1,31 @@
+.togglesContainer {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(180deg, #f6b868 0%, #ee6b2d 100%);
+}
+
+.questionContainer {
+  height: 80%;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggleChoiceContainer {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.toggleChoice {
+  width: 50%;
+  text-align: center;
+}
