@@ -1,3 +1,23 @@
+* {
+  font-family: "Mulish", sans-serif;
+  color: white;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .togglesContainer {
   box-sizing: border-box;
   height: 100vh;
@@ -32,6 +52,12 @@
 
   display: flex;
   flex-direction: row;
+
+  font-size: 1.5rem;
+  padding: 1.25rem 0;
+
+  border: 2px solid #f9d29f;
+  border-radius: 100px;
 }
 
 .toggleChoice {
