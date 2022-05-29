@@ -19,10 +19,20 @@ function ToggleChoice({
           <Fragment key={index}>
             <div
               className={classnames("highlighter", {
+                highlighter33: choices.length === 3,
+                highlighter50: choices.length === 2,
+                offset33: choices.length === 3 && currentChoiceIndex === 1,
                 offset50: choices.length === 2 && currentChoiceIndex === 1,
+                offset66: choices.length === 3 && currentChoiceIndex === 2,
               })}
             />
-            <div className="toggleChoice" onClick={() => handleClick(index)}>
+            <div
+              className={classnames({
+                toggleChoice50: choices.length === 2,
+                toggleChoice33: choices.length === 3,
+              })}
+              onClick={() => handleClick(index)}
+            >
               <span
                 className={classnames({
                   highlightedChoice: currentChoiceIndex === index,
