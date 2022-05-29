@@ -37,14 +37,18 @@ function Toggles({ question, answers }) {
     <div className="togglesContainer">
       <div className="questionContainer">
         <h1>{question}</h1>
-        {displayAnswers.map((answer, index) => {
-          return (
-            <ToggleChoice
-              {...answer}
-              handleChange={answersAreCorrect ? () => {} : handleChange(index)}
-            />
-          );
-        })}
+        <div className="toggleChoicesContainer">
+          {displayAnswers.map((answer, index) => {
+            return (
+              <ToggleChoice
+                {...answer}
+                handleChange={
+                  answersAreCorrect ? () => {} : handleChange(index)
+                }
+              />
+            );
+          })}
+        </div>
         <h2>{answerMessage}</h2>
       </div>
     </div>
