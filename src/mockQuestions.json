@@ -1,0 +1,36 @@
+[
+  {
+    "question": "What are the ideal conditions inside an office?",
+    "answers": [
+      {
+        "correctChoiceIndex": 0,
+        "choices": ["good pay", "bad pay"]
+      },
+      {
+        "correctChoiceIndex": 1,
+        "choices": ["lot of meetings", "less meetings"]
+      },
+      {
+        "correctChoiceIndex": 0,
+        "choices": ["free coffee", "expensive coffee"]
+      },
+      {
+        "correctChoiceIndex": 1,
+        "choices": ["bear in office", "dog in office"]
+      }
+    ]
+  },
+  {
+    "question": "Which are the best sports people & teams?",
+    "answers": [
+      {
+        "correctChoiceIndex": 1,
+        "choices": ["Liverpool", "Chelsea", "Man Utd"]
+      },
+      {
+        "correctChoiceIndex": 0,
+        "choices": ["Serena Williams", "Naomi Osaka"]
+      }
+    ]
+  }
+]

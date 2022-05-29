@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import Toggles from "./Toggles";
+import reportWebVitals from "./reportWebVitals";
+import questions from "./mockQuestions";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Can create custom questions in ./mockQuestions, then select by index here. 'currentQuestion' will then be passed to the component
+const currentQuestion = questions[0];
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Toggles {...currentQuestion} />
   </React.StrictMode>
 );
 
