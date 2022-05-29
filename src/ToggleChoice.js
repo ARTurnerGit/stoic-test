@@ -10,13 +10,20 @@ function ToggleChoice({
   const handleClick = (currentChoiceIndex) => {
     handleChange(currentChoiceIndex);
   };
+
   return (
     <div className="toggleChoiceContainer">
       {choices.map((c, index) => {
         return (
-          <div className="toggleChoice" onClick={() => handleClick(index)}>
-            {index === currentChoiceIndex ? <em>{c}</em> : c}
-          </div>
+          <>
+            <div
+              className="highlighter"
+              style={{ marginLeft: `${currentChoiceIndex * 50}%` }}
+            />
+            <div className="toggleChoice" onClick={() => handleClick(index)}>
+              {index === currentChoiceIndex ? <em>{c}</em> : c}
+            </div>
+          </>
         );
       })}
     </div>
