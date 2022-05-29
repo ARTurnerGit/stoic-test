@@ -18,8 +18,9 @@ function ToggleChoice({
         return (
           <>
             <div
-              className="highlighter"
-              style={{ marginLeft: `${currentChoiceIndex * 50}%` }}
+              className={classnames("highlighter", {
+                offset50: choices.length === 2 && currentChoiceIndex === 1,
+              })}
             />
             <div className="toggleChoice" onClick={() => handleClick(index)}>
               <span
