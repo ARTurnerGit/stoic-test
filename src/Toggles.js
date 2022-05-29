@@ -24,12 +24,22 @@ function Toggles({ question, answers }) {
     ]);
   };
 
+  const answersAreCorrect = displayAnswers.every(
+    ({ correctChoiceIndex, currentChoiceIndex }) =>
+      currentChoiceIndex === correctChoiceIndex
+  );
+
+  const answerMessage = `The answer is ${
+    answersAreCorrect ? "correct" : "incorrect"
+  }`;
+
   return (
     <div className="togglesContainer">
       <h1>{question}</h1>
       {displayAnswers.map((answer, index) => {
         return <ToggleChoice {...answer} handleChange={handleChange(index)} />;
       })}
+      <h2>{answerMessage}</h2>
     </div>
   );
 }
