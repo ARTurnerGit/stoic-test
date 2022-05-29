@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -16,7 +16,7 @@ function ToggleChoice({
     <div className="toggleChoiceContainer">
       {choices.map((c, index) => {
         return (
-          <>
+          <Fragment key={index}>
             <div
               className={classnames("highlighter", {
                 offset50: choices.length === 2 && currentChoiceIndex === 1,
@@ -31,7 +31,7 @@ function ToggleChoice({
                 {c}
               </span>
             </div>
-          </>
+          </Fragment>
         );
       })}
     </div>
