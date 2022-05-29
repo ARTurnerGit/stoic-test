@@ -3,43 +3,8 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import ToggleChoice from "./ToggleChoice";
+import { generateDisplayAnswers } from "./utils";
 import "./Toggles.css";
-
-function getRandomIndexForArray(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function generateDisplayAnswers(answers) {
-  const mappedAnswers = answers.map((a) => ({
-    ...a,
-    currentChoiceIndex: getRandomIndexForArray(a.choices),
-  }));
-
-  const randomisedAnswers = [];
-  while (mappedAnswers.length > 0) {
-    const randomIndex = getRandomIndexForArray(mappedAnswers);
-    randomisedAnswers.push({ ...mappedAnswers[randomIndex] });
-    mappedAnswers.splice(randomIndex, 1);
-  }
-
-  // final check to make sure we don't randomly load all answers correctly
-  if (
-    randomisedAnswers.every(
-      ({ correctChoiceIndex, currentChoiceIndex }) =>
-        correctChoiceIndex === currentChoiceIndex
-    )
-  ) {
-    const indexToChange = getRandomIndexForArray(randomisedAnswers);
-    const answerToChange = randomisedAnswers[indexToChange];
-    if (answerToChange.correctChoiceIndex === 0) {
-      answerToChange.currentChoiceIndex = 1;
-    } else {
-      answerToChange.currentChoiceIndex = 0;
-    }
-  }
-
-  return randomisedAnswers;
-}
 
 function Toggles({ question, answers }) {
   const [displayAnswers, setDisplayAnswers] = useState(() =>
@@ -66,11 +31,14 @@ function Toggles({ question, answers }) {
     answersAreCorrect ? "correct" : "incorrect"
   }`;
 
-  const percentageCorrect = displayAnswers.reduce((acc, val) => {
-    return val.currentChoiceIndex === val.correctChoiceIndex
-      ? acc + 1 / displayAnswers.length
-      : acc;
-  }, 0);
+  const percentageCorrect = displayAnswers.reduce(
+    (acc, { currentChoiceIndex, correctChoiceIndex }) => {
+      return currentChoiceIndex === correctChoiceIndex
+        ? acc + 1 / displayAnswers.length
+        : acc;
+    },
+    0
+  );
 
   return (
     <div
@@ -83,17 +51,19 @@ function Toggles({ question, answers }) {
       <div className="questionContainer">
         <h1>{question}</h1>
         <div className="toggleChoicesContainer">
-          {displayAnswers.map((answer, index) => {
-            return (
-              <ToggleChoice
-                key={index}
-                {...answer}
-                handleChange={
-                  answersAreCorrect ? () => {} : handleChange(index)
-                }
-              />
-            );
-          })}
+          {displayAnswers.map(
+            ({ correctChoiceIndex, ...answerProps }, index) => {
+              return (
+                <ToggleChoice
+                  key={index}
+                  {...answerProps}
+                  handleChange={
+                    answersAreCorrect ? () => {} : handleChange(index)
+                  }
+                />
+              );
+            }
+          )}
         </div>
         <h2>{answerMessage}</h2>
       </div>

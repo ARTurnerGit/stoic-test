@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import questions from "./mockQuestions";
 
 // Can create custom questions in ./mockQuestions, then select by index here. 'currentQuestion' will then be passed to the component
-const currentQuestion = questions[1];
+const currentQuestion = questions[0];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
