@@ -13,11 +13,22 @@ function Toggles({ question, answers }) {
     generateDisplayAnswers(answers)
   );
 
+  const handleChange = (stateIndex) => (currentChoiceIndex) => {
+    const precedingAnswers = displayAnswers.slice(0, stateIndex);
+    const followingAnswers = displayAnswers.slice(stateIndex + 1);
+    const changedAnswer = { ...displayAnswers[stateIndex], currentChoiceIndex };
+    setDisplayAnswers([
+      ...precedingAnswers,
+      changedAnswer,
+      ...followingAnswers,
+    ]);
+  };
+
   return (
     <div className="togglesContainer">
       <h1>{question}</h1>
-      {displayAnswers.map((answer) => {
-        return <ToggleChoice {...answer} />;
+      {displayAnswers.map((answer, index) => {
+        return <ToggleChoice {...answer} handleChange={handleChange(index)} />;
       })}
     </div>
   );
