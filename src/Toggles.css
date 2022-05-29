@@ -73,6 +73,9 @@ h2 {
   width: 50%;
   text-align: center;
 }
+.highlightedChoice {
+  color: #9f938b;
+}
 
 .highlighter {
   transition: all 0.4s ease;

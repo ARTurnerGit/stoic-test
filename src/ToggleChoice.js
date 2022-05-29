@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 function ToggleChoice({
   correctChoiceIndex,
@@ -21,7 +22,13 @@ function ToggleChoice({
               style={{ marginLeft: `${currentChoiceIndex * 50}%` }}
             />
             <div className="toggleChoice" onClick={() => handleClick(index)}>
-              {index === currentChoiceIndex ? <em>{c}</em> : c}
+              <span
+                className={classnames({
+                  highlightedChoice: currentChoiceIndex === index,
+                })}
+              >
+                {c}
+              </span>
             </div>
           </>
         );
